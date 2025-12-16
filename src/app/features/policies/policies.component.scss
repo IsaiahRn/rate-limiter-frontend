@@ -1,0 +1,280 @@
+.page {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+h2 {
+    margin: 6px 0 18px;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 18px;
+    align-items: start;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: 0 26px 70px rgba(15, 23, 42, 0.1);
+}
+
+.card h3 {
+    margin: 0 0 14px;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+}
+
+.error {
+    margin: 10px 0 14px;
+    color: #ef4444;
+    font-weight: 700;
+}
+
+.muted {
+    margin-top: 10px;
+    color: rgba(15, 23, 42, 0.55);
+    font-size: 13px;
+}
+
+/* ---- FORM ---- */
+
+form label {
+    display: block;
+    margin: 12px 0;
+    font-size: 13px;
+    color: rgba(15, 23, 42, 0.72);
+    font-weight: 700;
+}
+
+form label input,
+form label select {
+    display: block;
+    width: 100%;
+    height: 44px;
+    margin-top: 6px;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    padding: 0 12px;
+    outline: none;
+    background: #fff;
+    font-weight: 600;
+    color: rgba(15, 23, 42, 0.9);
+    transition: box-shadow 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+
+form label input::placeholder {
+    color: rgba(15, 23, 42, 0.35);
+    font-weight: 600;
+}
+
+form label input:focus,
+form label select:focus {
+    border-color: rgba(37, 99, 235, 0.65);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+    border-color: rgba(239, 68, 68, 0.55);
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+/* Fix Save / Clear button design (no HTML changes needed) */
+.actions>button {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, opacity 120ms ease;
+}
+
+.actions>button[type="submit"] {
+    color: #fff;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.22);
+}
+
+.actions>button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 44px rgba(37, 99, 235, 0.26);
+}
+
+.actions>button[type="button"] {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    color: rgba(15, 23, 42, 0.92);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+.actions>button[type="button"]:hover {
+    transform: translateY(-1px);
+    background: rgba(15, 23, 42, 0.03);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+}
+
+.actions>button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ---- TABLE ---- */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    min-width: 520px;
+    table-layout: fixed;
+}
+
+thead th {
+    text-align: left;
+    font-size: 12px;
+    color: rgba(15, 23, 42, 0.6);
+    padding: 0 10px;
+    font-weight: 800;
+}
+
+tbody tr {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+tbody tr:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+tbody td {
+    padding: 12px 12px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+tbody td:first-child {
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+
+tbody td:last-child {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    width: 110px;
+    text-align: right;
+    padding-right: 14px;
+}
+
+thead th:nth-child(2),
+tbody td:nth-child(2) {
+    width: 140px;
+}
+
+thead th:nth-child(3),
+tbody td:nth-child(3) {
+    width: 90px;
+}
+
+thead th:nth-child(4),
+tbody td:nth-child(4) {
+    width: 110px;
+}
+
+tbody tr.active {
+    outline: 2px solid rgba(37, 99, 235, 0.35);
+    border-radius: 14px;
+}
+
+/* ---- Pills / Delete ---- */
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 900;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.pill.hard {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.25);
+}
+
+.pill.soft {
+    color: #16a34a;
+    background: rgba(22, 163, 74, 0.1);
+    border-color: rgba(22, 163, 74, 0.25);
+}
+
+.right {
+    text-align: right;
+}
+
+.danger {
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.08);
+    color: #ef4444;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, opacity 120ms ease;
+}
+
+.danger:hover {
+    transform: translateY(-1px);
+    background: rgba(239, 68, 68, 0.14);
+    box-shadow: 0 10px 22px rgba(239, 68, 68, 0.1);
+}
+
+.danger:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 980px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        min-width: 0;
+    }
+}

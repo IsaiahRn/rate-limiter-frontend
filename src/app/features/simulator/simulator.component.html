@@ -1,0 +1,34 @@
+<section class="page">
+    <h2>Simulator</h2>
+    <p class="muted">Trigger the demo notify endpoint and observe allowance behavior.</p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Request</h3>
+
+            <div class="actions">
+                <button (click)="request()" [disabled]="loading">Request</button>
+            </div>
+
+            <div class="error" *ngIf="error">{{ error }}</div>
+        </div>
+
+        <div class="card">
+            <h3>Eligibility</h3>
+
+            <div *ngIf="!result" class="muted">No simulations yet</div>
+
+            <div *ngIf="result" class="decision" [class.allowed]="result.allowed" [class.blocked]="!result.allowed">
+                <div class="decision__title">{{ badgeTitle() }}</div>
+                <div class="decision__reason">{{ result.reason }}</div>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric__label">Retry after (s)</div>
+                        <div class="metric__value">{{ result.retryAfterSeconds ?? 0 }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

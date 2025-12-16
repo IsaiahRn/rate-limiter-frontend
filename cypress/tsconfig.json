@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "lib": ["es2019", "dom"],
+    "types": ["cypress"],
+    "allowJs": true,
+    "moduleResolution": "node",
+    "isolatedModules": false
+  },
+  "include": [
+    "**/*.cy.ts",
+    "**/*.cy.js",
+    "e2e/**/*.ts",
+    "e2e/**/*.js",
+    "support/**/*.ts",
+    "support/**/*.js"
+  ]
+}

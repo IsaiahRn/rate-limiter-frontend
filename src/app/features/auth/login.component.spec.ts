@@ -2,26 +2,25 @@
 
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { AppComponent } from './app.component';
-import { AuthService } from './core/services/auth.service';
+import { LoginComponent } from './login.component';
+import { AuthService } from '../../core/services/auth.service';
 
 function asAnyExpect() {
   return (expect as unknown) as any;
 }
 
 class AuthServiceStub {
-  user$ = of({ username: 'admin', role: 'ADMIN' });
-  logout() {}
+  login() { return of({ username: 'admin', role: 'ADMIN' }); }
 }
 
-describe('AppComponent', () => {
+describe('LoginComponent', () => {
   it('creates', async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [LoginComponent],
       providers: [{ provide: AuthService, useClass: AuthServiceStub }]
     }).compileComponents();
 
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
 
     asAnyExpect()(fixture.componentInstance).toBeTruthy();

@@ -1,0 +1,33 @@
+<div class="login">
+    <div class="login__card">
+        <h1 class="login__title">API Rate Limiter</h1>
+        <p class="login__subtitle">Sign in to continue</p>
+
+        <form [formGroup]="form" (ngSubmit)="submit()" class="login__form">
+            <label class="field">
+                <span class="field__label">Username</span>
+                <input class="field__input" type="text" formControlName="username" autocomplete="username" />
+            </label>
+
+            <label class="field">
+                <span class="field__label">Password</span>
+                <input class="field__input" type="password" formControlName="password"
+                    autocomplete="current-password" />
+            </label>
+
+            <button class="btn btn--primary" type="submit" [disabled]="loading">
+                {{ loading ? 'Signing in…' : 'Sign in' }}
+            </button>
+
+            <div class="login__error" *ngIf="error">{{ error }}</div>
+
+            <!-- <div class="login__demo">
+                <div class="login__demoTitle">Demo accounts:</div>
+                <ul>
+                    <li>Admin: <code>admin</code> / <code>admin123</code></li>
+                    <li>Client: <code>client</code> / <code>client123</code></li>
+                </ul>
+            </div> -->
+        </form>
+    </div>
+</div>

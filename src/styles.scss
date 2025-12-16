@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    color: #111827;
+}
+
+.btn {
+    border: 0;
+    border-radius: 999px;
+    padding: 12px 14px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn--primary {
+    background: linear-gradient(135deg, #2b6bff, #1a50d8);
+    color: #fff;
+    box-shadow: 0 16px 34px rgba(24, 74, 190, 0.22);
+}
+
+.btn--primary:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn--ghost {
+    background: rgba(17, 24, 39, 0.04);
+    color: #111827;
+    border: 1px solid rgba(17, 24, 39, 0.10);
+}
+
+.btn--danger {
+    background: rgba(220, 38, 38, 0.08);
+    color: #b91c1c;
+    border: 1px solid rgba(220, 38, 38, 0.25);
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-weight: 900;
+}
+
+.btn--danger:hover {
+    background: rgba(220, 38, 38, 0.12);
+}

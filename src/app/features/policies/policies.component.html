@@ -1,0 +1,105 @@
+<section class="page">
+    <h2 class="title">Client Policies</h2>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="card-head">
+                <h3>{{ selectedClientId ? 'Update Policy' : 'Create Policy' }}</h3>
+                <p>Define window, monthly quota, and throttling strategy per client.</p>
+            </div>
+
+            <form class="form" [formGroup]="form" (ngSubmit)="save()">
+                <div class="row">
+                    <label>
+                        <span>Client ID (must be an existing CLIENT username)</span>
+                        <input formControlName="clientId" placeholder="e.g. client" list="clientUsers" />
+                        <datalist id="clientUsers">
+                            <option *ngFor="let u of clientUsers" [value]="u"></option>
+                        </datalist>
+                    </label>
+                </div>
+
+                <div class="row two">
+                    <label>
+                        <span>Window (seconds)</span>
+                        <input type="number" formControlName="windowSeconds" />
+                    </label>
+
+                    <label>
+                        <span>Max requests / window</span>
+                        <input type="number" formControlName="windowMaxRequests" />
+                    </label>
+                </div>
+
+                <div class="row">
+                    <label>
+                        <span>Monthly quota</span>
+                        <input type="number" formControlName="monthlyMaxRequests" />
+                        <small>Maximum number of accepted requests per calendar month.</small>
+                    </label>
+                </div>
+
+                <div class="row">
+                    <label>
+                        <span>Throttle mode</span>
+                        <select formControlName="throttleMode">
+                            <option value="HARD">Hard (strict block)</option>
+                            <option value="SOFT">Soft (throttle)</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="actions">
+                    <button class="primary" type="submit" [disabled]="loading || form.invalid">Save</button>
+                    <button class="ghost" type="button" (click)="clear()" [disabled]="loading">Clear</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="card-head">
+                <h3>Saved Policies</h3>
+                <p *ngIf="policies.length">Tap a row to edit.</p>
+            </div>
+
+            <div class="table-wrap">
+                <div class="empty" *ngIf="!policies.length && !loading">No client policies yet</div>
+
+                <table class="table" *ngIf="policies.length">
+                    <thead>
+                        <tr>
+                            <th>Client</th>
+                            <th>Window</th>
+                            <th>Monthly</th>
+                            <th>Mode</th>
+                            <th class="right"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let p of policies" (click)="select(p)"
+                            [class.active]="p.clientId === selectedClientId">
+                            <td class="mono">{{ p.clientId }}</td>
+                            <td>{{ p.windowMaxRequests }} / {{ p.windowSeconds }}s</td>
+                            <td>{{ p.monthlyMaxRequests }}</td>
+                            <td>
+                                <span class="pill" [class.soft]="p.throttleMode === 'SOFT'"
+                                    [class.hard]="p.throttleMode === 'HARD'">
+                                    {{ p.throttleMode }}
+                                </span>
+                            </td>
+                            <td class="right">
+                                <button type="button" class="danger"
+                                    (click)="$event.stopPropagation(); remove(p.clientId)" [disabled]="loading">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
