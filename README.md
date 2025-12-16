@@ -1,59 +1,93 @@
-# RateLimiterUi
+# Rate Limiter Frontend (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+## Live Deployment
 
-## Development server
+- Netlify: https://<your-site>.netlify.app
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## Prerequisites
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Node.js 18+ (recommended)
+- npm 9+
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Run Locally
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 1) Install
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
+### 2) Set API base URL (local)
 
-To build the project run:
+Edit:
+
+**`src/environments/environment.ts`**
+
+```ts
+export const environment = {
+  production: false,
+  apiBaseUrl: "http://localhost:8080/api/v1",
+};
+```
+
+### 3) Start
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Open:
 
-## Running unit tests
+- http://localhost:4200
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
+
+Update your scripts:
+
+**`package.json`**
+
+```json
+{
+  "scripts": {
+    "start": "ng serve",
+    "prebuild": "node ./scripts/generate-env.js",
+    "build": "ng build",
+    "test": "ng test"
+  }
+}
+```
+
+### 3) Netlify build settings
+
+- Build command: `npm run build`
+- Publish directory: `dist/<your-angular-project-name>`
+
+---
+
+## Tests
+
+### Unit tests
 
 ```bash
-ng test
+npm test
 ```
 
-## Running end-to-end tests
+### E2E tests (Cypress, if configured)
 
-For end-to-end (e2e) testing, run:
+Terminal A:
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Terminal B:
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npx cypress open
+# or headless:
+npx cypress run
+```
