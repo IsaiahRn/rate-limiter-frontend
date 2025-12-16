@@ -76,7 +76,7 @@ Update your scripts:
 npm test
 ```
 
-### E2E tests (Cypress, if configured)
+### E2E tests (Cypress)
 
 Terminal A:
 
