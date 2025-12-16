@@ -46,28 +46,6 @@ Open:
 
 ---
 
-Update your scripts:
-
-**`package.json`**
-
-```json
-{
-  "scripts": {
-    "start": "ng serve",
-    "prebuild": "node ./scripts/generate-env.js",
-    "build": "ng build",
-    "test": "ng test"
-  }
-}
-```
-
-### 3) Netlify build settings
-
-- Build command: `npm run build`
-- Publish directory: `dist/<your-angular-project-name>`
-
----
-
 ## Tests
 
 ### Unit tests
@@ -87,7 +65,5 @@ npm start
 Terminal B:
 
 ```bash
-npx cypress open
-# or headless:
-npx cypress run
+npm run e2e
 ```
