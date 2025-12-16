@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 
 export type UserRole = 'ADMIN' | 'CLIENT';
 
@@ -21,10 +21,12 @@ export class AuthService {
   private readonly state$ = new BehaviorSubject<AuthState>(this.loadFromStorage());
   readonly authState$ = this.state$.asObservable();
 
+  private readonly base = environment.apiBaseUrl.replace(/\/+$/, '');
+
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<LoginResponse> {
-    const url = `${environment.apiBaseUrl}/auth/login`;
+    const url = `${this.base}/auth/login`;
     return this.http.post<LoginResponse>(url, { username, password } satisfies LoginRequest).pipe(
       tap((res) => {
         const next: AuthState = { username: res.username, role: res.role, token: res.token };

@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { ClientPolicy } from '../../state/rate-limiter.models';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 
 type UserSummaryDto = { username: string };
 
