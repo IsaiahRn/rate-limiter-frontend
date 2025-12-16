@@ -1,15 +1,16 @@
-// src/app/core/services/rate-limiter-api.service.ts
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { ClientPolicy } from '../../state/rate-limiter.models';
+import { environment } from '../../../environments/environment.development';
 
 type UserSummaryDto = { username: string };
 
 @Injectable({ providedIn: 'root' })
 export class RateLimiterApiService {
   private http = inject(HttpClient);
-  private readonly base = 'http://localhost:8080/api/v1';
+
+  private readonly base = environment.apiBaseUrl.replace(/\/+$/, '');
 
   // ADMIN
   getClientUsers(): Observable<string[]> {
@@ -33,7 +34,7 @@ export class RateLimiterApiService {
     return this.http.delete<void>(`${this.base}/rate-limits/clients/${encodeURIComponent(clientId)}`);
   }
 
-  // CLIENT/ADMIN (rate limited by authenticated username)
+  // CLIENT/ADMIN
   demoNotify(): Observable<string> {
     return this.http.post(`${this.base}/demo/notify`, {}, { responseType: 'text' });
   }
